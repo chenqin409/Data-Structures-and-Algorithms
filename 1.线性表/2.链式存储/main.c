@@ -137,16 +137,12 @@ int main(int argc, char *argv[]) {
 	int temp;
 	int value;
 	scanf("%d",&num);
-	int a[num];
 	for(int i=0;i<num;i++)
 	{
 		scanf("%d",&temp);
-		a[i]=temp;
+		ListInsert(sl,0,temp);
 	}
-	for(int i=0;i<num;i++)
-	{
-		temp=ListInsert(sl,i,a[num-i-1]);
-	}
+
 	int times;
 	scanf("%d",&times);
 	while(times>0)
