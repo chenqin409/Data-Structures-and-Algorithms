@@ -1,0 +1,176 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef struct Bnode
+{
+    char data;
+    struct Bnode *lchild,*rchild;
+}Bnode,*Btree;
+
+void createtree(Btree &T)
+{
+    char ch;
+    scanf("%c",&ch);
+    if (ch=='#')
+        T=NULL;
+    else{
+        T=new Bnode;
+        T->data=ch;
+        createtree(T->lchild);
+        createtree(T->rchild);
+
+    }
+}
+void preorder(Btree T)
+{
+    if (T==NULL)
+        return;
+    else{
+        printf("%c",T->data);
+        preorder(T->lchild);
+        preorder(T->rchild);
+    }
+}
+
+void inorder(Btree T)
+{
+    if (T==NULL)
+        return;
+    else{
+
+        inorder(T->lchild);
+        printf("%c",T->data);
+        inorder(T->rchild);
+    }
+}
+void postorder(Btree T)
+{
+    if (T==NULL)
+        return;
+    else{
+        postorder(T->lchild);
+        postorder(T->rchild);
+        printf("%c",T->data);
+
+    }
+}
+void leverorder(Btree T)
+{ if (T==NULL)
+        return;
+    else{
+            Btree p;
+            queue<Btree>Q;
+            Q.push(T);
+            while(!Q.empty())
+            {p=Q.front();
+            Q.pop();
+             printf("%c",p->data);
+             if (p->lchild) Q.push(p->lchild);
+             if (p->rchild) Q.push(p->rchild);
+            }
+
+
+}
+}
+int countnode(Btree T)
+{
+   if (T==NULL)
+        return 0;
+    else return countnode(T->lchild)+countnode(T->rchild)+1;//加根结点
+}
+int countleaf(Btree T)
+{   if (T==NULL)
+        return 0;
+    else{
+        if ((!T->lchild)&&(!T->rchild)) return 1;
+        else return countleaf(T->lchild)+countleaf(T->rchild);
+
+    }
+
+}
+Btree pre_mid_create(char *pre,char *mid,int len)
+{
+    if (len==0)
+         return NULL;
+    char ch=pre[0];
+    int index=0;
+    while(mid[index]!=ch)
+        {index++;}
+    Btree T=new Bnode;
+    T->data=ch;
+    T->lchild=pre_mid_create(pre+1,mid,index);
+    T->rchild=pre_mid_create(pre+index+1,mid+index+1,len-index-1);
+   return T;
+}
+
+Btree post_mid_create(char *last,char *mid,int len)
+{
+   if (len==0)
+         return NULL;
+    char ch=last[len-1];
+    int index=0;
+    while(mid[index]!=ch)
+        {index++;}
+    Btree T=new Bnode;
+    T->data=ch;
+     T->lchild=post_mid_create(last,mid,index);
+     T->rchild=post_mid_create(last+index,mid+index+1,len-index-1);
+      return T;
+}
+
+int main()
+{
+    Btree T;
+  /*  createtree(T);//abd##e##cfh###g##
+    preorder(T);
+    printf("\n");
+    inorder(T);
+      printf("\n");
+    postorder(T);
+    printf("\n");
+    leverorder(T);
+    int nodenum=countnode(T);
+  printf("结点个数%d\n",nodenum);
+    int leafnum=countleaf(T);
+      printf("叶子个数%d\n",leafnum);*/
+int n;
+char pre[100],mid[100],last[100];
+      printf("输入要生成的结点个数\n");
+       scanf("%d",&n);
+        printf("输入先序序列\n");//abdecfhg
+        getchar();
+        for(int i=0;i<n;i++)
+            scanf("%c",&pre[i]);
+         printf("输入中序序列\n");//dbeahfcg
+             getchar();
+        for(int i=0;i<n;i++)
+            scanf("%c",&mid[i]);
+            T=pre_mid_create(pre,mid,n);
+             preorder(T);
+ printf("\n");
+    inorder(T);
+      printf("\n");
+    postorder(T);
+    printf("\n");
+
+
+
+       printf("输入要生成的结点个数\n");
+       scanf("%d",&n);
+        printf("输入后序序列\n");//debhfgca
+        getchar();
+        for(int i=0;i<n;i++)
+            scanf("%c",&last[i]);
+         printf("输入中序序列\n");//dbeahfcg
+             getchar();
+        for(int i=0;i<n;i++)
+            scanf("%c",&mid[i]);
+            T=post_mid_create(last,mid,n);
+             preorder(T);
+ printf("\n");
+    inorder(T);
+      printf("\n");
+    postorder(T);
+    printf("\n");
+
+
+}
