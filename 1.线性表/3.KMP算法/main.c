@@ -11,12 +11,12 @@ typedef struct{
 
 void get_next(String T,int next[])
 {
-	int i = 1; //Ö÷Ö¸Õë
-	int j = 0; //Æ¥ÅäÖ¸Õë
-	next[1] = 0 ; //¹æ¶¨
+	int i = 1; //ä¸»æŒ‡é’ˆ
+	int j = 0; //åŒ¹é…æŒ‡é’ˆ
+	next[1] = 0 ; //è§„å®š
 	while(i<T.len)
 	{
-		if(j==0||T.ch[i]==T.ch[j]) //ÕıÔÚÅĞ¶ÏµÚi+1¸öÎ»ÖÃµÄÇé¿ö 
+		if(j==0||T.ch[i]==T.ch[j]) //æ­£åœ¨åˆ¤æ–­ç¬¬i+1ä¸ªä½ç½®çš„æƒ…å†µ 
 		{
 			i++;
 			j++;
@@ -24,15 +24,15 @@ void get_next(String T,int next[])
 		}
 		else
 		{
-			j = next[j]; //Æ¥ÅäÖ¸Õë»ØÍË 
+			j = next[j]; //åŒ¹é…æŒ‡é’ˆå›é€€ 
 		}
 	}
 }
 
 int Index_KMP(String S,String T,int pos)
 {
-	int i = pos;//Ö÷´®µÄÏÂ±ê
-	int j = 1; //×Ö´®µÄÏÂ±ê
+	int i = pos;//ä¸»ä¸²çš„ä¸‹æ ‡
+	int j = 1; //å­—ä¸²çš„ä¸‹æ ‡
 	int next[MaxSize];
 	get_next(T,next);
 	while(i<=S.len && j<=T.len)
@@ -56,8 +56,6 @@ int Index_KMP(String S,String T,int pos)
 		return 0;
 	}
 }
-
-
 
 
 int main(int argc, char *argv[]) {

@@ -8,7 +8,7 @@ typedef struct SingleNode{
 	struct SingleNode *next;
 }SingleLinkedList, *LinkList;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void ListInitialize(SingleLinkedList* *head)
 {
 	if((*head = (SingleLinkedList*) malloc(sizeof(SingleLinkedList)))==NULL)
@@ -18,7 +18,7 @@ void ListInitialize(SingleLinkedList* *head)
 	(*head)->next = NULL;
 } 
 
-//Çó³¤¶È
+//æ±‚é•¿åº¦
 int ListLength(SingleLinkedList* head)
 {
 	SingleLinkedList* p = head;
@@ -31,7 +31,7 @@ int ListLength(SingleLinkedList* head)
 	return size;	
 } 
 
-//È¡Êý¾ÝÔªËØ
+//å–æ•°æ®å…ƒç´ 
 int ListGet(SingleLinkedList* head,int i,ElemType* x)
 {
 	SingleLinkedList* p=head;
@@ -43,14 +43,14 @@ int ListGet(SingleLinkedList* head,int i,ElemType* x)
 	}
 	if (j!=i)
 	{
-		//printf("È¡ÔªËØÎ»ÖÃ²ÎÊý³ö´í£¡\n");
-		return 0; //²»½øÐÐºóÃæ¸³Öµ²Ù×÷ 
+		//printf("å–å…ƒç´ ä½ç½®å‚æ•°å‡ºé”™ï¼\n");
+		return 0; //ä¸è¿›è¡ŒåŽé¢èµ‹å€¼æ“ä½œ 
 	}
 	*x = p->data;
 	return 1;	 
 } 
 
-//²åÈëÔªËØ
+//æ’å…¥å…ƒç´ 
 int ListInsert(SingleLinkedList* head ,int i,ElemType x)
 {
 	SingleLinkedList *p=head,*q;
@@ -62,7 +62,7 @@ int ListInsert(SingleLinkedList* head ,int i,ElemType x)
 	}
 	if(j!= i-1)
 	{
-		//printf("²åÈëÎ»ÖÃ²ÎÊý´í£¡\n");
+		//printf("æ’å…¥ä½ç½®å‚æ•°é”™ï¼\n");
 		return 0;
 	}
 	if((q=(SingleLinkedList*)malloc(sizeof(SingleLinkedList)))==NULL)
@@ -75,7 +75,7 @@ int ListInsert(SingleLinkedList* head ,int i,ElemType x)
 	return 1;
 }
 
-//É¾³ýÔªËØ
+//åˆ é™¤å…ƒç´ 
 int ListDelete(SingleLinkedList* head,int i,ElemType *x)
 {
 	SingleLinkedList *p=head,*s;
@@ -87,17 +87,17 @@ int ListDelete(SingleLinkedList* head,int i,ElemType *x)
 	}
 	if(j!=i-1)
 	{
-		//printf("É¾³ýÎ»ÖÃ²ÎÊý´í£¡\n");
+		//printf("åˆ é™¤ä½ç½®å‚æ•°é”™ï¼\n");
 		return 0;
 	}
-	s = p->next;
+	s = p->next;  //åˆ é™¤çš„æ˜¯pçš„ä¸‹ä¸€ä¸ªç»“ç‚¹
 	*x = s->data;
 	p->next = s->next;
 	free(s);
 	return 1;
 } 
 
-//ÊÍ·Å²Ù×÷
+//é‡Šæ”¾æ“ä½œ
 void ListDestroy(SingleLinkedList* *head)
 {
 	SingleLinkedList *p,*p1;
@@ -111,7 +111,7 @@ void ListDestroy(SingleLinkedList* *head)
 	*head = NULL;
 } 
 
-//´òÓ¡
+//æ‰“å°
 void PrintList(SingleLinkedList* head)
 {
 	SingleLinkedList *p=head->next;

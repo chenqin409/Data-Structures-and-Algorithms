@@ -2,36 +2,36 @@
 #include <stdlib.h>
 
 #define MaxSize 100
-typedef int ElemType; //ÖØ¶¨Òå 
+typedef int ElemType; //é‡å®šä¹‰ 
 
 typedef struct{
 	ElemType list[MaxSize];
 	int size;
 }SequenceList;
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void ListInitialize(SequenceList *L) 
 {
 	L->size=0;
 }
 
-//·µ»Ø³¤¶È
+//è¿”å›é•¿åº¦
 int ListLength(SequenceList L)
 {
 	return L.size;
 } 
 
-//²åÈë²Ù×÷
-int ListInsert(SequenceList *L,int i,ElemType x) //²åÈëµÄÎ»ÖÃ¼°²åÈëµÄÊı¾İ
+//æ’å…¥æ“ä½œ
+int ListInsert(SequenceList *L,int i,ElemType x) //æ’å…¥çš„ä½ç½®åŠæ’å…¥çš„æ•°æ®
 {
 	if(L->size>=MaxSize)
 	{
-		printf("Ë³Ğò±íÒÑÂú£¬ÎŞ·¨²åÈë£¡\n");
+		printf("é¡ºåºè¡¨å·²æ»¡ï¼Œæ— æ³•æ’å…¥ï¼\n");
 		return 0;
 	}
 	else if(i<0 || i>L->size)
 	{
-		printf("²ÎÊıi²»ºÏ·¨£¡\n");
+		printf("å‚æ•°iä¸åˆæ³•ï¼\n");
 		return 0;
 	}
 	else
@@ -46,16 +46,16 @@ int ListInsert(SequenceList *L,int i,ElemType x) //²åÈëµÄÎ»ÖÃ¼°²åÈëµÄÊı¾İ
 	}
 } 
 
-//É¾³ı²Ù×÷
-int ListDelete(SequenceList *L,int i,ElemType *x) //É¾³ıÔªËØµÄĞòºÅ£¬ÒÔ¼°±£´æÉ¾³ıÔªËØµÄ²ÎÊı
+//åˆ é™¤æ“ä½œ
+int ListDelete(SequenceList *L,int i,ElemType *x) //åˆ é™¤å…ƒç´ çš„åºå·ï¼Œä»¥åŠä¿å­˜åˆ é™¤å…ƒç´ çš„å‚æ•°
 {
 	if(L->size<=0)
 	{
-		printf("Ë³Ğò±íÒÔ¿Õ£¬ÎŞÊı¾İ¿ÉÉ¾£¡\n");
+		printf("é¡ºåºè¡¨ä»¥ç©ºï¼Œæ— æ•°æ®å¯åˆ ï¼\n");
 	}	
 	else if(i<0 ||i>L->size-1)
 	{
-		printf("²ÎÊıi²»ºÏ·¨£¡\n");
+		printf("å‚æ•°iä¸åˆæ³•ï¼\n");
 	}
 	else
 	{
@@ -69,12 +69,12 @@ int ListDelete(SequenceList *L,int i,ElemType *x) //É¾³ıÔªËØµÄĞòºÅ£¬ÒÔ¼°±£´æÉ¾³ı
 	}
 } 
 
-//È¡ÔªËØ
+//å–å…ƒç´ 
 int ListGet(SequenceList L,int i,ElemType *x)
 {
 	if(i<0 || i>=L.size)
 	{
-		printf("²ÎÊıi²»ºÏ·¨£¡\n");
+		printf("å‚æ•°iä¸åˆæ³•ï¼\n");
 		return 0;
 	}
 	else
