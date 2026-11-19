@@ -1,22 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//¶¨ÒåÊı¾İ 
+//å®šä¹‰æ•°æ® 
 #define MaxSize 255
 typedef int MyType;
-//Õ»µÄ½á¹¹Ìå
+//æ ˆçš„ç»“æ„ä½“
 typedef struct{
 	MyType stack[MaxSize];
 	int Top;
 }Stack;
 
-//³õÊ¼»¯Õ»£¨Ö¸Õë´«Èë£¬Õ»¶¥ÏÂ±êÖµ¸³ÖµÎª0£©
+//åˆå§‹åŒ–æ ˆï¼ˆæŒ‡é’ˆä¼ å…¥ï¼Œæ ˆé¡¶ä¸‹æ ‡å€¼èµ‹å€¼ä¸º0ï¼‰
 void Initialize(Stack *s)
 {
 	s->Top=0;
 }
 
-//ÅĞ¶ÏÕ»ÊÇ·ñÎª¿Õ 
+//åˆ¤æ–­æ ˆæ˜¯å¦ä¸ºç©º 
 int IsEmpty(Stack s)
 {
 	if(s.Top<=0)
@@ -29,7 +29,7 @@ int IsEmpty(Stack s)
 	}
 }
 
-//½øÕ»
+//è¿›æ ˆ
 void push(Stack *s,MyType value)
 {
 	if(s->Top>=MaxSize)
@@ -42,7 +42,7 @@ void push(Stack *s,MyType value)
 	}
 }
 
-//³öÕ»
+//å‡ºæ ˆ
 void pop(Stack *s)
 {
 	if(IsEmpty(*s))
@@ -55,7 +55,7 @@ void pop(Stack *s)
 	}
 }
 
-//È¡Õ»¶¥ÔªËØ£¨°ÑÖµ¸³¸øÖ¸Õë£©
+//å–æ ˆé¡¶å…ƒç´ ï¼ˆæŠŠå€¼èµ‹ç»™æŒ‡é’ˆï¼‰
 void top(Stack s,MyType * value)
 {
 	if(IsEmpty(s))

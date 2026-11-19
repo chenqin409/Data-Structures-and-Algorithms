@@ -35,7 +35,7 @@ int IsEmpty(node* head)
 void push(node* head,MyType value)
 {
 	node* p;
-	if((p=(node*)malloc(sizeof(node)))==NULL)
+	if((p=(node*)malloc(sizeof(node)))==NULL)  //新建的节点，需要分配内存
 	{
 		printf("Error!");
 		return;
@@ -54,7 +54,7 @@ void pop(node* head)
 	}
 	else
 	{
-		node* p=head->next;
+		node* p=head->next;  //已有的节点，不需要分配内存
 		head->next = p->next;  //把第三个点给第一个点，第二个点（第一个值）丢弃 
 		free(p);
 	}

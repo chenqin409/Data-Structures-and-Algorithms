@@ -68,19 +68,18 @@ int main() {
 	int path[16],i=0;
 	for(int place = 0;place!=-1;place = pre[place])
 	{
-		path[i++] = place;
+		path[i++] = place; //第一次place等于0，表示到达目的地，后面从目的地一直往回找
 	}
 	
 	//通过逆序遍历找到正向结果 
 	string name[4]={"狼","羊","菜","空手"};
-	for(int j=i-1;j>=0;j--)
+	for(int j=i-1;j>=0;j--)  //前一步i最后多了++，需要减回去
 	{
-		if(j<i-1) //排除未赋值的act[15] 
+		if(j<i-1)  //因为path[i-1]=15(1111)，需要排除未赋值的act[15] 
 		{
 			cout<<"第"<<i-j-1<<"步：";
 			if(act[path[j]]==3) cout<<"农夫"<<name[act[path[j]]]<<"过河"<<endl; 
 			else           cout<<"农夫带"<<name[act[path[j]]]<<"过河"<<endl; 
-			
 		}
 	}
 	return 0;
